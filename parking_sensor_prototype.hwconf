@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ASCII"?>
+<device:XMLDevice xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:device="http://www.silabs.com/ss/hwconfig/document/device.ecore" name="EFM32ZG222F32" partId="mcu.arm.efm32.zg.efm32zg222f32" contextId="com.silabs.sdk.stack.super:2.0.0._310455064">
+  <mode name="DefaultMode">
+    <property object="DefaultMode" propertyId="mode.diagramLocation" value="100, 100"/>
+    <property object="I2C0" propertyId="I2C.BSP_I2C_SCL.PIN" value="PC1"/>
+    <property object="I2C0" propertyId="I2C.BSP_I2C_SDA.PIN" value="PC0"/>
+    <property object="LEUART0" propertyId="LEUART.BSP_LEUART_RX.PIN" value="PD5"/>
+    <property object="LEUART0" propertyId="LEUART.BSP_LEUART_TX.PIN" value="PD4"/>
+    <property object="PA8" propertyId="ports.settings.custompinname" value="EFM_DISP_SELECT"/>
+    <property object="PC10" propertyId="ports.settings.custompinname" value="UIF_LED0"/>
+    <property object="PC11" propertyId="ports.settings.custompinname" value="UIF_LED1"/>
+    <property object="PORTIO" propertyId="portio.i2c0.enable.scl" value="Enabled"/>
+    <property object="PORTIO" propertyId="portio.i2c0.enable.sda" value="Enabled"/>
+    <property object="PORTIO" propertyId="portio.i2c0.location.i2c0" value="4"/>
+    <property object="PORTIO" propertyId="portio.leuart0.enable.rx" value="Enabled"/>
+    <property object="PORTIO" propertyId="portio.leuart0.enable.tx" value="Enabled"/>
+    <property object="PORTIO" propertyId="portio.timer0.enable.cc0" value="Enabled"/>
+    <property object="PORTIO" propertyId="portio.usart1.location.usart1" value="3"/>
+    <property object="TIMER0" propertyId="TIMER.BSP_TIMER_CC0.PIN" value="PA0"/>
+  </mode>
+  <modeTransition>
+    <property object="RESET &#x2192; DefaultMode" propertyId="modeTransition.source" value="RESET"/>
+    <property object="RESET &#x2192; DefaultMode" propertyId="modeTransition.target" value="DefaultMode"/>
+  </modeTransition>
+</device:XMLDevice>
