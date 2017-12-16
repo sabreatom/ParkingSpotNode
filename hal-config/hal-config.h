@@ -112,6 +112,13 @@
 // [UARTNCP]$
 
 // $[USART1]
+#define PORTIO_USART1_RX_PIN          (6)
+#define PORTIO_USART1_RX_PORT         (gpioPortD)
+#define PORTIO_USART1_ROUTE_LOC       (2)
+
+#define PORTIO_USART1_TX_PIN          (7)
+#define PORTIO_USART1_TX_PORT         (gpioPortD)
+
 // [USART1]$
 
 // $[VCOM]
@@ -123,8 +130,26 @@
 #endif /* HAL_CONFIG_H */
 
 // $[Custom pin names]
+#define PWR_GOOD_PIN                  (1)
+#define PWR_GOOD_PORT                 (gpioPortA)
+
+#define BOOST_CNTRL_PIN               (2)
+#define BOOST_CNTRL_PORT              (gpioPortA)
+
 #define EFM_DISP_SELECT_PIN           (8)
 #define EFM_DISP_SELECT_PORT          (gpioPortA)
+
+#define VOUT_CFG_3_PIN                (7)
+#define VOUT_CFG_3_PORT               (gpioPortB)
+
+#define VOUT_CFG_0_PIN                (2)
+#define VOUT_CFG_0_PORT               (gpioPortC)
+
+#define VOUT_CFG_1_PIN                (3)
+#define VOUT_CFG_1_PORT               (gpioPortC)
+
+#define VOUT_CFG_2_PIN                (4)
+#define VOUT_CFG_2_PORT               (gpioPortC)
 
 #define UIF_LED0_PIN                  (10)
 #define UIF_LED0_PORT                 (gpioPortC)
