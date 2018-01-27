@@ -6,17 +6,29 @@
     <property object="I2C0" propertyId="I2C.BSP_I2C_SDA.PIN" value="PC0"/>
     <property object="LEUART0" propertyId="LEUART.BSP_LEUART_RX.PIN" value="PD5"/>
     <property object="LEUART0" propertyId="LEUART.BSP_LEUART_TX.PIN" value="PD4"/>
+    <property object="PA1" propertyId="ports.settings.custompinname" value="PWR_GOOD"/>
+    <property object="PA2" propertyId="ports.settings.custompinname" value="BOOST_CNTRL"/>
     <property object="PA8" propertyId="ports.settings.custompinname" value="EFM_DISP_SELECT"/>
+    <property object="PB7" propertyId="ports.settings.custompinname" value="VOUT_CFG_3"/>
     <property object="PC10" propertyId="ports.settings.custompinname" value="UIF_LED0"/>
     <property object="PC11" propertyId="ports.settings.custompinname" value="UIF_LED1"/>
+    <property object="PC2" propertyId="ports.settings.custompinname" value="VOUT_CFG_0"/>
+    <property object="PC3" propertyId="ports.settings.custompinname" value="VOUT_CFG_1"/>
+    <property object="PC4" propertyId="ports.settings.custompinname" value="VOUT_CFG_2"/>
     <property object="PORTIO" propertyId="portio.i2c0.enable.scl" value="Enabled"/>
     <property object="PORTIO" propertyId="portio.i2c0.enable.sda" value="Enabled"/>
     <property object="PORTIO" propertyId="portio.i2c0.location.i2c0" value="4"/>
     <property object="PORTIO" propertyId="portio.leuart0.enable.rx" value="Enabled"/>
     <property object="PORTIO" propertyId="portio.leuart0.enable.tx" value="Enabled"/>
     <property object="PORTIO" propertyId="portio.timer0.enable.cc0" value="Enabled"/>
-    <property object="PORTIO" propertyId="portio.usart1.location.usart1" value="3"/>
+    <property object="PORTIO" propertyId="portio.usart1.enable.rx" value="Enabled"/>
+    <property object="PORTIO" propertyId="portio.usart1.enable.tx" value="Enabled"/>
+    <property object="PORTIO" propertyId="portio.usart1.location.usart1" value="2"/>
     <property object="TIMER0" propertyId="TIMER.BSP_TIMER_CC0.PIN" value="PA0"/>
+    <property object="USART1" propertyId="USART.BSP_USART_MISO.PIN" value="PD6"/>
+    <property object="USART1" propertyId="USART.BSP_USART_MOSI.PIN" value="PD7"/>
+    <property object="USART1" propertyId="USART.BSP_USART_RX.PIN" value="PD6"/>
+    <property object="USART1" propertyId="USART.BSP_USART_TX.PIN" value="PD7"/>
   </mode>
   <modeTransition>
     <property object="RESET &#x2192; DefaultMode" propertyId="modeTransition.source" value="RESET"/>

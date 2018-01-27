@@ -14,15 +14,14 @@
 
 #include "tps62740_psu.h"
 
+#include "MAG3110.h"
+
 int main(void)
 {
 	uint64_t cur_time = 0;
 
 	parking_data_struct parking_data = {0};
-	parking_data.mag_x_val = 100;
-	parking_data.mag_y_val = 115;
-	parking_data.mag_z_val = 1000;
-	parking_data.parked = 1;
+	MAG3110_mag_value_t MAG3110_mag_value = {0};
 
   /* Chip errata */
   CHIP_Init();
@@ -40,14 +39,25 @@ int main(void)
   while ((Uptime_getValue() - cur_time) < 5000);
 
   Lora_init();
+  void MAG3110_Init();
 
   xprintf("[INFO] Initialization done!");
 
   /* Infinite loop */
   while (1) {
 	  if ((Uptime_getValue() - cur_time) > 1000) {
-		  Lora_send_parking_data(parking_data);
-		  cur_time = Uptime_getValue();
+		  if (MAG3110_checkNewMeasurement()){
+			  xprintf("[INFO] Reading sensor value.");
+
+			  MAG3110_mag_value = MAG3110_read();
+			  parking_data.mag_x_val = MAG3110_mag_value.mag_x_val;
+			  parking_data.mag_y_val = MAG3110_mag_value.mag_y_val;
+			  parking_data.mag_z_val = MAG3110_mag_value.mag_z_val;
+
+			  Lora_send_parking_data(parking_data);
+
+			  cur_time = Uptime_getValue();
+		  }
 	  }
   }
 }
