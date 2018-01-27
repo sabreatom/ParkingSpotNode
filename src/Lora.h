@@ -11,7 +11,7 @@
 #include "stdint.h"
 #include "hal-config.h"
 
-//Parking data struct:
+//Parking data structure:
 typedef struct {
 	uint32_t mag_x_val;
 	uint32_t mag_y_val;
