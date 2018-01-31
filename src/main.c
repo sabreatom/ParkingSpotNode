@@ -39,25 +39,28 @@ int main(void)
   while ((Uptime_getValue() - cur_time) < 5000);
 
   Lora_init();
-  void MAG3110_Init();
+  MAG3110_Init();
 
-  xprintf("[INFO] Initialization done!");
+  xprintf("[INFO] Initialization done!\n");
 
   /* Infinite loop */
   while (1) {
-	  if ((Uptime_getValue() - cur_time) > 1000) {
-		  if (MAG3110_checkNewMeasurement()){
-			  xprintf("[INFO] Reading sensor value.");
+	  if ((Uptime_getValue() - cur_time) > 2000) {
+		  xprintf("[INFO] Checking sensor.\n");
+		  //if (MAG3110_checkNewMeasurement()){
+			  xprintf("[INFO] Reading sensor value.\n");
 
 			  MAG3110_mag_value = MAG3110_read();
 			  parking_data.mag_x_val = MAG3110_mag_value.mag_x_val;
 			  parking_data.mag_y_val = MAG3110_mag_value.mag_y_val;
 			  parking_data.mag_z_val = MAG3110_mag_value.mag_z_val;
 
+			  xprintf("[INFO] Sensor values - x: %d, y: %d, z: %d\n", MAG3110_mag_value.mag_x_val, MAG3110_mag_value.mag_y_val, MAG3110_mag_value.mag_z_val);
+
 			  Lora_send_parking_data(parking_data);
 
 			  cur_time = Uptime_getValue();
-		  }
+		 // }
 	  }
   }
 }

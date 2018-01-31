@@ -34,8 +34,8 @@ void MAG3110_Init()
 	//enable I2C clock:
 	CMU_ClockEnable(cmuClock_I2C0, true);
 
-	GPIO_PinModeSet(PORTIO_I2C0_SDA_PORT, PORTIO_I2C0_SDA_PIN, gpioModeWiredAnd, 0);      // configure SDA pin as open drain output
-	GPIO_PinModeSet(PORTIO_I2C0_SCL_PORT, PORTIO_I2C0_SCL_PIN, gpioModeWiredAnd, 0);      // configure SCL pin as open drain output
+	GPIO_PinModeSet(PORTIO_I2C0_SDA_PORT, PORTIO_I2C0_SDA_PIN, gpioModeWiredAndDrivePullUp, 0);      // configure SDA pin as open drain output
+	GPIO_PinModeSet(PORTIO_I2C0_SCL_PORT, PORTIO_I2C0_SCL_PIN, gpioModeWiredAndDrivePullUp, 0);      // configure SCL pin as open drain output
 
 	I2C_Init(I2C0, &i2c_init);                     // apply configuration to I2C0
 	I2C0->CTRL |= I2C_CTRL_AUTOACK;                        // enable AUTO-ACK feature
