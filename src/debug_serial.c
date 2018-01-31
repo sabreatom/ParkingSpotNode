@@ -21,7 +21,7 @@ static FIFO_t rx_fifo;
 static unsigned int rx_buf[DEBUG_RX_FIFO_SIZE];
 
 //TX FIFO:
-#define DEBUG_TX_FIFO_SIZE		100
+#define DEBUG_TX_FIFO_SIZE		200
 static FIFO_t tx_fifo;
 static unsigned int tx_buf[DEBUG_TX_FIFO_SIZE];
 
