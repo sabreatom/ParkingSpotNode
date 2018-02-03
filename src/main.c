@@ -16,6 +16,8 @@
 
 #include "MAG3110.h"
 
+#include "low_power.h"
+
 int main(void)
 {
 	uint64_t cur_time = 0;
@@ -29,7 +31,6 @@ int main(void)
   CMU_ClockEnable(cmuClock_GPIO, true);
 
   GPIO_PinModeSet(UIF_LED0_PORT, UIF_LED0_PIN, gpioModePushPull, 1);
-  GPIO_PinOutSet(UIF_LED0_PORT, UIF_LED0_PIN);
 
   Uptime_init();
   Debug_Init();
@@ -41,14 +42,17 @@ int main(void)
   Lora_init();
   MAG3110_Init();
 
+  LP_init();
+
   xprintf("[INFO] Initialization done!\n");
 
   /* Infinite loop */
   while (1) {
-	  if ((Uptime_getValue() - cur_time) > 2000) {
+	  GPIO_PinOutSet(UIF_LED0_PORT, UIF_LED0_PIN);
+	  //if ((Uptime_getValue() - cur_time) > 2000) {
 		  xprintf("[INFO] Checking sensor.\n");
 		  //if (MAG3110_checkNewMeasurement()){
-			  xprintf("[INFO] Reading sensor value.\n");
+		  	  xprintf("[INFO] Reading sensor value.\n");
 
 			  MAG3110_mag_value = MAG3110_read();
 			  parking_data.mag_x_val = MAG3110_mag_value.mag_x_val;
@@ -59,8 +63,15 @@ int main(void)
 
 			  Lora_send_parking_data(parking_data);
 
-			  cur_time = Uptime_getValue();
-		 // }
-	  }
+			  //cur_time = Uptime_getValue();
+		  //}
+	  //}
+
+	//power up delay before configuring Lora module:
+	cur_time = Uptime_getValue();
+	while ((Uptime_getValue() - cur_time) < 2000);
+
+	GPIO_PinOutClear(UIF_LED0_PORT, UIF_LED0_PIN);
+	LP_sleep();
   }
 }
