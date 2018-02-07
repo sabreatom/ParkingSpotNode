@@ -142,3 +142,19 @@ bool MAG3110_checkNewMeasurement()
 }
 
 //----------------------------------------------------
+//Detect car presence:
+//----------------------------------------------------
+
+#define Z_AXIS_MAG_THRESHOLD_VALUE	1000
+
+bool MAG3110_isCarPresent(MAG3110_mag_value_t value)
+{
+	if (value.mag_z_val < Z_AXIS_MAG_THRESHOLD_VALUE){ //using only z axis
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+//----------------------------------------------------

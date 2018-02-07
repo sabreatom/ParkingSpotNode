@@ -51,13 +51,21 @@ int main(void)
 	  GPIO_PinOutSet(UIF_LED0_PORT, UIF_LED0_PIN);
 	  //if ((Uptime_getValue() - cur_time) > 2000) {
 		  xprintf("[INFO] Checking sensor.\n");
-		  //if (MAG3110_checkNewMeasurement()){
+		  //if (MAG3110_checkNewMeasurement()){ //FIXME something wrong here, need to check using logic analyzer
 		  	  xprintf("[INFO] Reading sensor value.\n");
 
 			  MAG3110_mag_value = MAG3110_read();
 			  parking_data.mag_x_val = MAG3110_mag_value.mag_x_val;
 			  parking_data.mag_y_val = MAG3110_mag_value.mag_y_val;
 			  parking_data.mag_z_val = MAG3110_mag_value.mag_z_val;
+
+			  //check car presence:
+			  if (MAG3110_isCarPresent(MAG3110_mag_value)){
+				  parking_data.parked = 1;
+			  }
+			  else{
+				  parking_data.parked = 0;
+			  }
 
 			  xprintf("[INFO] Sensor values - x: %d, y: %d, z: %d\n", MAG3110_mag_value.mag_x_val, MAG3110_mag_value.mag_y_val, MAG3110_mag_value.mag_z_val);
 

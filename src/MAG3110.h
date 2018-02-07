@@ -19,5 +19,6 @@ typedef struct {
 void MAG3110_Init();
 MAG3110_mag_value_t MAG3110_read();
 bool MAG3110_checkNewMeasurement();
+bool MAG3110_isCarPresent(MAG3110_mag_value_t value);
 
 #endif /* SRC_MAG3110_H_ */
